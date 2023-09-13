@@ -12,19 +12,14 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-neutral sticky">
+    <div className="navbar bg-neutral  sticky">
       <div className="flex-1">
         {/* <img className="w-12" src="/logo.svg"  /> */}
-        <h1 className="text-4xl text-[#05c8f9]">𝓗𝓞𝓣𝓔𝓛̽̒̂</h1>
+        <h1 className="text-4xl text-[#05c8f9]">𝐻𝒪𝒯𝐸𝐿</h1>
         <Link to="/" className="btn btn-ghost text-white normal-case text-md">
           Home
         </Link>
-        <Link
-          to="/login"
-          className="btn btn-ghost text-white normal-case text-md"
-        >
-          Login
-        </Link>
+
         <Link
           to="/order"
           className="btn btn-ghost text-white normal-case text-md"

@@ -10,6 +10,8 @@ import Profile from "./components/Profile";
 import AuthProvider from "./Providers/AuthProvider";
 import Orders from "./components/Orders";
 import PrivateRoute from "./routes/PrivateRoute";
+import Cart from "./components/Cart";
+import ChefDetails from "./components/ChefDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,12 +30,28 @@ const router = createBrowserRouter([
         element: <Register></Register>,
       },
       {
+        path: "/chefdetails/:id",
+        element: <ChefDetails></ChefDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/chef${params.id}`),
+      },
+      {
         path: "/order",
         element: (
           <PrivateRoute>
             <Orders></Orders>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/cart/:id",
+        element: (
+          <PrivateRoute>
+            <Cart></Cart>
+          </PrivateRoute>
+        ),
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/categories${params.id}`),
       },
       {
         path: "/profile",
