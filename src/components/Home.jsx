@@ -1,33 +1,61 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Cart from "./Cart";
+import AboutUs from "./AboutUs";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
   return (
     <div>
-      <div
-        className="hero min-h-screen"
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1617526762079-76fd969fe004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYW)",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <button className="btn btn-primary">Get Started</button>
+      <div className="carousel h-screen w-full">
+        <div id="slide1" className="carousel-item relative w-full">
+          <img src="https://i.ibb.co/JykVZbQ/chef6.jpg" className="w-full" />
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide4" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide2" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide2" className="carousel-item relative w-full">
+          <img src="https://i.ibb.co/1XD44f7/chef9.jpg" className="w-full" />
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide1" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide3" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide3" className="carousel-item relative w-full">
+          <img src="https://i.ibb.co/zrTnkHW/chef7.jpg" className="w-full" />
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide2" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide4" className="btn btn-circle">
+              ❯
+            </a>
+          </div>
+        </div>
+        <div id="slide4" className="carousel-item relative w-full">
+          <img src="https://i.ibb.co/JykVZbQ/chef6.jpg" className="w-full" />
+          <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+            <a href="#slide3" className="btn btn-circle">
+              ❮
+            </a>
+            <a href="#slide1" className="btn btn-circle">
+              ❯
+            </a>
           </div>
         </div>
       </div>
       <Cart></Cart>
+      <AboutUs></AboutUs>
     </div>
   );
 };

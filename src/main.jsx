@@ -12,6 +12,7 @@ import Orders from "./components/Orders";
 import PrivateRoute from "./routes/PrivateRoute";
 import Cart from "./components/Cart";
 import ChefDetails from "./components/ChefDetails";
+import AboutUs from "./components/AboutUs";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,14 +27,16 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
+        path: "/about",
+        element: <AboutUs></AboutUs>,
+      },
+      {
         path: "/register",
         element: <Register></Register>,
       },
       {
-        path: "/chefdetails/:id",
+        path: "/chefdetails",
         element: <ChefDetails></ChefDetails>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/chef${params.id}`),
       },
       {
         path: "/order",
@@ -44,7 +47,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/cart/:id",
+        // path: "/cart/:id",
+        path: "/cart",
         element: (
           <PrivateRoute>
             <Cart></Cart>

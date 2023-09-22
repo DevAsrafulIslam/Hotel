@@ -6,15 +6,15 @@ const Cart = () => {
   const [chef, setChef] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/chef")
+    fetch("https://hotel-server-8iwzhfidh-devasrafulislam.vercel.app/chef")
       .then((res) => res.json())
       .then((data) => setChef(data))
       .catch((error) => console.error(error));
   }, []);
-  console.log("chef", chef);
+  // console.log("chef", chef);
 
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card ">
       <div className="card-body ">
         <h1 className="text-3xl text-center my-4">CHEF</h1>
         <div className="card-title md:grid-cols-2 grid sm:grid-cols-1 lg:grid-cols-3 mx-auto">
@@ -47,7 +47,7 @@ const Cart = () => {
 
                   <button
                     to="/chefdetails"
-                    className="  rounded-md py-1 h-10 mr-2 bg-[#1e95eb] px-1 text-end"
+                    className="  rounded-3xl py-1 h-10 mr-2 bg-[#1e95eb] px-2 text-end"
                   >
                     <Link to="/chefdetails">Book Now</Link>
                   </button>

@@ -12,10 +12,10 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar bg-neutral  sticky">
+    <div className="navbar bg-neutral px-8  sticky">
       <div className="flex-1">
         {/* <img className="w-12" src="/logo.svg"  /> */}
-        <h1 className="text-4xl text-[#05c8f9]">𝐻𝒪𝒯𝐸𝐿</h1>
+        <h1 className="text-4xl text-[#05c8f9]">𝐻𝒪𝒯𝐸𝐿 𝑅𝑒𝓁𝒶𝓍</h1>
         <Link to="/" className="btn btn-ghost text-white normal-case text-md">
           Home
         </Link>
@@ -26,12 +26,6 @@ const Header = () => {
         >
           Orders
         </Link>
-        <Link
-          to="/register"
-          className="btn btn-ghost text-white normal-case text-md"
-        >
-          Register
-        </Link>
         {user && (
           <Link
             to="/profile"
@@ -40,34 +34,37 @@ const Header = () => {
             Profile
           </Link>
         )}
-        {user ? (
-          <div className="gap-4 flex">
-            <span className="text-[#05c8f9]">{user.email}</span>
-            <button
-              onClick={handleLogout}
-              className="text-white hover:text-[#086bdc]"
-            >
-              Sign Out
-            </button>
-          </div>
-        ) : (
-          <Link
-            to="/login"
-            className="btn btn-ghost text-white normal-case text-md"
+        <Link
+          to="/about"
+          className="btn btn-ghost text-white normal-case text-md"
+        >
+          About Us
+        </Link>
+        {/* <Link
+          to="/register"
+          className="btn btn-ghost text-white normal-case text-md"
+        >
+          Register
+        </Link> */}
+      </div>
+      {user ? (
+        <div className="gap-4 flex">
+          <span className="text-[#05c8f9]">{user.displayName}</span>
+          <button
+            onClick={handleLogout}
+            className=" text-red-500 hover:text-white"
           >
-            Login
-          </Link>
-        )}
-      </div>
-      <div className="flex-none gap-2">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered h-8 w-24 md:w-auto"
-          />
+            Sign Out
+          </button>
         </div>
-      </div>
+      ) : (
+        <Link
+          to="/login"
+          className="btn btn-ghost text-[#086bdc] hover:text-white normal-case text-md"
+        >
+          Login
+        </Link>
+      )}
     </div>
   );
 };

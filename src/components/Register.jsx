@@ -1,17 +1,49 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import {
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+} from "firebase/auth";
+import app from "./firebase/firebase.config";
 
 const Register = () => {
+  // Sign in with Google
+  const auth = getAuth(app);
+  const GoogleProvider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () => {
+    signInWithPopup(auth, GoogleProvider)
+      .then((result) => {
+        const googleUser = result.user;
+        console.log(googleUser);
+      })
+      .catch((error) => console.log("error", error.message));
+  };
+
+  // Sign in with GitHub
+  const GitHubProvider = new GithubAuthProvider();
+  const handleGithubSignIn = () => {
+    signInWithPopup(auth, GitHubProvider)
+      .then((result) => {
+        const githubUser = result.user;
+        console.log(githubUser);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const { user, createUser } = useContext(AuthContext);
   console.log(createUser);
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
+    const photo = form.photo.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    console.log(name, photo, email, password);
 
     createUser(email, password)
       .then((result) => {
@@ -19,7 +51,7 @@ const Register = () => {
         form.reset();
         console.log(loggedUser);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log("error", error.message));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -37,6 +69,17 @@ const Register = () => {
                 type="text"
                 placeholder="Name"
                 name="name"
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                placeholder="photo"
+                name="photo"
                 className="input input-bordered"
               />
             </div>
@@ -78,6 +121,19 @@ const Register = () => {
             </div>
           </form>
         </div>
+        <div className="divider">Or</div>
+        <button
+          className="bg-primary text-white px-16 py-2 rounded-3xl"
+          onClick={handleGoogleSignIn}
+        >
+          Google Sign-in
+        </button>
+        <button
+          className="bg-primary text-white px-16 py-2 rounded-3xl"
+          onClick={handleGithubSignIn}
+        >
+          GitHub Sign-in
+        </button>
       </div>
     </div>
   );
