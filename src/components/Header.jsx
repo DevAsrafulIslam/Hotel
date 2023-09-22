@@ -40,6 +40,12 @@ const Header = () => {
         >
           About Us
         </Link>
+        <Link
+          to="/blog"
+          className="btn btn-ghost text-white normal-case text-md"
+        >
+          Blog
+        </Link>
         {/* <Link
           to="/register"
           className="btn btn-ghost text-white normal-case text-md"

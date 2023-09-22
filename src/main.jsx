@@ -13,6 +13,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import Cart from "./components/Cart";
 import ChefDetails from "./components/ChefDetails";
 import AboutUs from "./components/AboutUs";
+import Blog from "./components/Blog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         element: <AboutUs></AboutUs>,
       },
       {
+        path: "/blog",
+        element: <Blog></Blog>,
+      },
+      {
         path: "/register",
         element: <Register></Register>,
       },
@@ -46,6 +51,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         // path: "/cart/:id",
         path: "/cart",
